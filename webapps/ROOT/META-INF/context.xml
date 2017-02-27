@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Context>
+<Context>
+    <JarScanFilter defaultPluggabilityScan="false"
+                   defaultTldScan="false"
+                   pluggabilityScan=""
+                   pluggabilitySkip="*.*"
+                   tldScan=""
+                   tldSkip="*.*" />
+  </JarScanner>
+</Context>
