@@ -232,8 +232,14 @@
   <!--   suppressSmap        Should the generation of SMAP info for JSR45   -->
   <!--                       debugging be suppressed?  [false]              -->
   <!--                                                                      -->
-  <!--   trimSpaces          Should white spaces in template text between   -->
-  <!--                       actions or directives be trimmed?  [false]     -->
+  <!--   trimSpaces          Should template text that consists entirely of -->
+  <!--                       whitespace be removed from the output (true),  -->
+  <!--                       replaced with a single space (single) or left  -->
+  <!--                       unchanged (false)? Note that if a JSP page or  -->
+  <!--                       tag file specifies a trimDirectiveWhitespaces  -->
+  <!--                       value of true, that will take precedence over  -->
+  <!--                       this configuration setting for that page/tag.  -->
+  <!--                       [false]                                        -->
   <!--                                                                      -->
   <!--   xpoweredBy          Determines whether X-Powered-By response       -->
   <!--                       header is added by generated servlet.  [false] -->
@@ -4296,6 +4302,10 @@
     <mime-mapping>
         <extension>woff</extension>
         <mime-type>application/x-font-woff</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>woff2</extension>
+        <mime-type>font/woff2</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>wpd</extension>
