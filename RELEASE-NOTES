@@ -16,7 +16,7 @@
 ================================================================================
 
 
-                     Apache Tomcat Version 9.0.2
+                     Apache Tomcat Version 9.0.6
                             Release Notes
 
 
@@ -47,12 +47,12 @@ API Stability:
 
 The public interfaces for the following classes are fixed and will not be
 changed at all during the remaining lifetime of the 9.x series:
-- None
+- All classes in the javax namespace
 
 The public interfaces for the following classes may be added to in order to
 resolve bugs and/or add new features. No existing interface method will be
 removed or changed although it may be deprecated.
-- None
+- org.apache.catalina.* (excluding sub-packages)
 
 Note: As Tomcat 9 matures, the above list will be added to. The list is not
       considered complete at this time.
