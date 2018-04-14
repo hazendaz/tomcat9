@@ -76,7 +76,7 @@
                port="8080" protocol="HTTP/1.1"
                connectionTimeout="20000"
                redirectPort="8443"
-               compressableMimeType="text/html,text/xml,text/css,text/javascript,application/x-javascript,application/javascript"
+               compressibleMimeType="text/html,text/xml,text/css,text/javascript,application/x-javascript,application/javascript"
                compression="on" compressionMinSize="100" />
 
     <!-- Define a SSL/TLS HTTP/1.1 Connector on port 8443
