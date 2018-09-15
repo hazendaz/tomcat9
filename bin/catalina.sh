@@ -240,7 +240,7 @@ if $cygwin; then
   CATALINA_BASE=`cygpath --absolute --windows "$CATALINA_BASE"`
   CATALINA_TMPDIR=`cygpath --absolute --windows "$CATALINA_TMPDIR"`
   CLASSPATH=`cygpath --path --windows "$CLASSPATH"`
-  JAVA_ENDORSED_DIRS=`cygpath --path --windows "$JAVA_ENDORSED_DIRS"`
+  [ -n "$JAVA_ENDORSED_DIRS" ] && JAVA_ENDORSED_DIRS=`cygpath --path --windows "$JAVA_ENDORSED_DIRS"`
 fi
 
 if [ -z "$JSSE_OPTS" ] ; then
@@ -284,9 +284,8 @@ if [ -d "$CATALINA_HOME/endorsed" ]; then
     ENDORSED_PROP=java.endorsed.dirs
 fi
 
-# Uncomment the following line to make the umask available when using the
-# org.apache.catalina.security.SecurityListener
-#JAVA_OPTS="$JAVA_OPTS -Dorg.apache.catalina.security.SecurityListener.UMASK=`umask`"
+# Make the umask available when using the org.apache.catalina.security.SecurityListener
+JAVA_OPTS="$JAVA_OPTS -Dorg.apache.catalina.security.SecurityListener.UMASK=`umask`"
 
 if [ -z "$USE_NOHUP" ]; then
     if $hpux; then
@@ -297,11 +296,12 @@ if [ -z "$USE_NOHUP" ]; then
 fi
 unset _NOHUP
 if [ "$USE_NOHUP" = "true" ]; then
-    _NOHUP=nohup
+    _NOHUP="nohup"
 fi
 
 # Add the JAVA 9 specific start-up parameters required by Tomcat
 JDK_JAVA_OPTIONS="$JDK_JAVA_OPTIONS --add-opens=java.base/java.lang=ALL-UNNAMED"
+JDK_JAVA_OPTIONS="$JDK_JAVA_OPTIONS --add-opens=java.base/java.io=ALL-UNNAMED"
 JDK_JAVA_OPTIONS="$JDK_JAVA_OPTIONS --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED"
 export JDK_JAVA_OPTIONS
 
