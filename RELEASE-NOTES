@@ -16,7 +16,7 @@
 ================================================================================
 
 
-                     Apache Tomcat Version 9.0.14
+                     Apache Tomcat Version 9.0.19
                             Release Notes
 
 
@@ -72,7 +72,7 @@ for use by web applications (by placing them in "lib"):
 * catalina-ha.jar (High availability package)
 * catalina-storeconfig.jar (Generation of XML configuration from current state)
 * catalina-tribes.jar (Group communication)
-* ecj-4.9.jar (Eclipse JDT Java compiler)
+* ecj-4.10.jar (Eclipse JDT Java compiler)
 * el-api.jar (EL 3.0 API)
 * jasper.jar (Jasper 2 Compiler and Runtime)
 * jasper-el.jar (Jasper 2 EL implementation)
@@ -115,7 +115,7 @@ and putting them in the shared classloader instead (JARs should be put in the
 Security manager URLs:
 ======================
 In order to grant security permissions to JARs located inside the
-web application repository, use URLs of of the following format
+web application repository, use URLs of the following format
 in your policy file:
 
 file:${catalina.base}/webapps/examples/WEB-INF/lib/driver.jar

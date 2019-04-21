@@ -457,7 +457,7 @@ For further reading:
 
       https://tomcat.apache.org/tomcat-9.0-doc/setup.html
 
-    * Windows service HOW-TO
+    * Windows Service How-To
 
       https://tomcat.apache.org/tomcat-9.0-doc/windows-service-howto.html
 
