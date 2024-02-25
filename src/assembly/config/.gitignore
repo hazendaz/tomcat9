@@ -1,0 +1,8 @@
+# bin allow
+!bin/
+
+# jar allow
+!*.jar
+
+# tar.gz allow
+!*.tar.gz
