@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    tomcat9 (https://github.com/hazendaz/tomcat9)
+
+    Copyright 2011-2024 Hazendaz.
+
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of The Apache Software License,
+    Version 2.0 which accompanies this distribution, and is available at
+    https://www.apache.org/licenses/LICENSE-2.0.txt
+
+    Contributors:
+        Hazendaz (Jeremy Landis).
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.github.hazendaz</groupId>
+        <artifactId>base-parent</artifactId>
+        <version>43</version>
+        <relativePath />
+    </parent>
+
+    <groupId>com.github.hazendaz.tomcat</groupId>
+    <artifactId>tomcat9</artifactId>
+    <version>9.0.86.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>tomcat9</name>
+    <description>Tomcat 6 Implementation</description>
+    <url>https://hazendaz.github.io/tomcat9/</url>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>manual</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:ssh://git@github.com/hazendaz/tomcat9.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/hazendaz/tomcat9.git</developerConnection>
+        <url>https://github.com/hazendaz/tomcat9</url>
+        <tag>HEAD</tag>
+    </scm>
+    <distributionManagement>
+        <site>
+            <id>gh-pages-scm</id>
+            <name>tomcat9 Distribution Wrapper GitHub Pages</name>
+            <url>scm:git:ssh://git@github.com/hazendaz/tomcat9.git</url>
+        </site>
+    </distributionManagement>
+
+    <properties>
+        <!-- JDK Compilation/Runtime Level -->
+        <java.version>11</java.version>
+        <java.release.version>11</java.release.version>
+        <javadoc.java.release.version>11</javadoc.java.release.version>
+
+        <!-- Project Final Name -->
+        <project.environment>apache-tomcat</project.environment>
+
+        <!-- Standard Dependencies -->
+        <commons-daemon.version>1.3.4</commons-daemon.version>
+        <ecj.version>3.33.0</ecj.version>
+        <logback.version>1.2.13</logback.version>
+        <tomcat.version>9.0.86</tomcat.version>
+        <tomcat-slf4j-logback.version>9.0.86</tomcat-slf4j-logback.version>
+
+        <!-- Psi Probe Tomcat Manager -->
+        <psi-probe.version>4.1.3</psi-probe.version>
+
+        <!-- Java EE Api Versions -->
+        <activation.version>1.2.2</activation.version>
+        <annotation.version>1.3.5</annotation.version>
+        <ejb.version>3.2.6</ejb.version>
+        <el-api.version>3.0.3</el-api.version>
+        <el-impl.version>3.0.4</el-impl.version>
+        <interceptor.version>1.2.5</interceptor.version>
+        <jms.version>2.0.3</jms.version>
+        <mail.version>1.6.7</mail.version>
+        <persistence.version>2.2.3</persistence.version>
+        <resource.version>1.7.4</resource.version>
+        <transaction.version>1.3.3</transaction.version>
+        <websocket.version>1.1.2</websocket.version>
+
+        <!-- Automatic Module Name -->
+        <module.name>com.github.hazendaz.tomcat</module.name>
+    </properties>
+
+    <dependencies>
+        <!-- Tomcat Bin including slf4j/logback (bootstrap no longer in maven central) -->
+        <dependency>
+            <groupId>commons-daemon</groupId>
+            <artifactId>commons-daemon</artifactId>
+            <version>${commons-daemon.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-daemon</groupId>
+            <artifactId>commons-daemon</artifactId>
+            <version>${commons-daemon.version}</version>
+            <scope>runtime</scope>
+            <type>tar.gz</type>
+            <classifier>native-src</classifier>
+        </dependency>
+        <dependency>
+            <groupId>com.github.tomcat-slf4j-logback</groupId>
+            <artifactId>tomcat9-slf4j-logback</artifactId>
+            <version>${tomcat-slf4j-logback.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Java EE8 API Stack -->
+        <dependency>
+            <groupId>com.sun.activation</groupId>
+            <artifactId>jakarta.activation</artifactId>
+            <version>${activation.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>jakarta.mail</artifactId>
+            <version>${mail.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.activation</groupId>
+            <artifactId>jakarta.activation-api</artifactId>
+            <version>${activation.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.ejb</groupId>
+            <artifactId>jakarta.ejb-api</artifactId>
+            <version>${ejb.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.interceptor</groupId>
+            <artifactId>jakarta.interceptor-api</artifactId>
+            <version>${interceptor.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.el</groupId>
+            <artifactId>jakarta.el-api</artifactId>
+            <version>${el-api.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.jms</groupId>
+            <artifactId>jakarta.jms-api</artifactId>
+            <version>${jms.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.resource</groupId>
+            <artifactId>jakarta.resource-api</artifactId>
+            <version>${resource.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.transaction</groupId>
+            <artifactId>jakarta.transaction-api</artifactId>
+            <version>${transaction.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.websocket</groupId>
+            <artifactId>jakarta.websocket-api</artifactId>
+            <version>${websocket.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>${persistence.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>jakarta.el</artifactId>
+            <version>${el-impl.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- ECJ Libs -->
+        <dependency>
+            <groupId>org.eclipse.jdt</groupId>
+            <artifactId>ecj</artifactId>
+            <version>${ecj.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Logging -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-access</artifactId>
+            <version>${logback.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Tomcat Libs -->
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina</artifactId>
+            <version>${tomcat.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina-ant</artifactId>
+            <version>${tomcat.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina-ha</artifactId>
+            <version>${tomcat.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-coyote</artifactId>
+            <version>${tomcat.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-dbcp</artifactId>
+            <version>${tomcat.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jasper</artifactId>
+            <version>${tomcat.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jasper-el</artifactId>
+            <version>${tomcat.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-servlet-api</artifactId>
+            <version>${tomcat.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-tribes</artifactId>
+            <version>${tomcat.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- PSI Probe -->
+        <dependency>
+            <groupId>com.github.psi-probe</groupId>
+            <artifactId>psi-probe-web</artifactId>
+            <version>${psi-probe.version}</version>
+            <scope>compile</scope>
+            <type>war</type>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>${project.environment}-${project.version}</finalName>
+
+        <plugins>
+            <!-- Tomcat Configuration -->
+            <!-- Does not exist for tomcat 7, using configuration files directly
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-tomcat</id>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <phase>package</phase>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.github.hazendaz.tomcat</groupId>
+                                    <artifactId>tomcat9-config</artifactId>
+                                    <version>${tomcat.version}</version>
+                                    <type>tar.xz</type>
+                                    <classifier>distro</classifier>
+                                    <outputDirectory>${project.build.directory}</outputDirectory>
+                                    <includes>**/bootstrap.jar,**/tomcat-native.tar.gz</includes>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            -->
+
+            <!-- Tomcat Assembly -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptors>
+                        <descriptor>${project.basedir}/src/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                    <appendAssemblyId>false</appendAssemblyId>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- License Plugin -->
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <configuration>
+                    <licenseSets>
+                        <licenseSet>
+                            <header>LICENSE_HEADER</header>
+                            <excludes combine.children="append">
+                                <!-- Exclude tomcat configs -->
+                                <exclude>src/assembly/config/bin/**</exclude>
+                                <exclude>src/assembly/config/conf/**</exclude>
+                                <exclude>src/assembly/config/NOTICE</exclude>
+                                <exclude>src/assembly/config/RUNNING.txt</exclude>
+                                <exclude>src/assembly/config/RELEASE-NOTES</exclude>
+                                <exclude>src/assembly/config/webapps/**</exclude>
+                            </excludes>
+                        </licenseSet>
+                    </licenseSets>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
