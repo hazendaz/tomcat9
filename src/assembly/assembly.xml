@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    tomcat9 (https://github.com/hazendaz/tomcat9)
+
+    Copyright 2011-2024 Hazendaz.
+
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of The Apache Software License,
+    Version 2.0 which accompanies this distribution, and is available at
+    https://www.apache.org/licenses/LICENSE-2.0.txt
+
+    Contributors:
+        Hazendaz (Jeremy Landis).
+
+-->
+<assembly xmlns="https://maven.apache.org/ASSEMBLY/2.2.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://maven.apache.org/ASSEMBLY/2.2.0 https://maven.apache.org/xsd/assembly-2.2.0.xsd">
+
+    <id>assembly</id>
+
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+
+    <includeBaseDirectory>true</includeBaseDirectory>
+
+    <fileSets>
+
+        <!-- Tomcat Core for libraries (jars) -->
+        <fileSet>
+            <directory>${project.build.directory}/${project.environment}-${tomcat.version}/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <fileMode>0750</fileMode>
+            <lineEnding>unix</lineEnding>
+            <excludes>
+                <exclude>**/*.jar</exclude>
+                <exclude>**/*.tar.gz</exclude>
+            </excludes>
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/${project.environment}-${tomcat.version}/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <fileMode>0444</fileMode>
+            <includes>
+                <include>**/*.jar</include>
+                <include>**/*.tar.gz</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/${project.environment}-${tomcat.version}/lib</directory>
+            <outputDirectory>lib</outputDirectory>
+            <fileMode>0444</fileMode>
+        </fileSet>
+
+        <!-- Tomcat Override -->
+        <fileSet>
+            <directory>${project.basedir}/src/assembly/config/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <fileMode>0750</fileMode>
+            <lineEnding>unix</lineEnding>
+            <excludes>
+                <exclude>**/*.jar</exclude>
+                <exclude>**/*.tar.gz</exclude>
+            </excludes>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/assembly/config/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <fileMode>0444</fileMode>
+            <includes>
+                <include>**/*.jar</include>
+                <include>**/*.tar.gz</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/assembly/config/cache</directory>
+            <outputDirectory>cache</outputDirectory>
+            <fileMode>0644</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/assembly/config/conf</directory>
+            <outputDirectory>conf</outputDirectory>
+            <fileMode>0640</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/assembly/config/data</directory>
+            <outputDirectory>data</outputDirectory>
+            <fileMode>0644</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/assembly/config/endorsed</directory>
+            <outputDirectory>endorsed</outputDirectory>
+            <fileMode>0444</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/assembly/config/keystore</directory>
+            <outputDirectory>keystore</outputDirectory>
+            <fileMode>0640</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/assembly/config/lib</directory>
+            <outputDirectory>lib</outputDirectory>
+            <fileMode>0444</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/assembly/config/logs</directory>
+            <outputDirectory>logs</outputDirectory>
+            <fileMode>0644</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/assembly/config/properties</directory>
+            <outputDirectory>properties</outputDirectory>
+            <fileMode>0640</fileMode>
+            <lineEnding>unix</lineEnding>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/assembly/config/temp</directory>
+            <outputDirectory>temp</outputDirectory>
+            <fileMode>0644</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/assembly/config/truststore</directory>
+            <outputDirectory>truststore</outputDirectory>
+            <fileMode>0640</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/assembly/config/webapps</directory>
+            <outputDirectory>webapps</outputDirectory>
+            <fileMode>0644</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/assembly/config/work</directory>
+            <outputDirectory>work</outputDirectory>
+            <fileMode>0644</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/assembly/config</directory>
+            <outputDirectory />
+            <fileMode>0444</fileMode>
+            <lineEnding>unix</lineEnding>
+            <includes>
+                <include>LICENSE</include>
+                <include>NOTICE</include>
+                <include>RELEASE-NOTES</include>
+                <include>RUNNING.txt</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+
+    <dependencySets>
+        <!-- Grab Bin Commons-Daemon Dependency -->
+        <dependencySet>
+            <includes>
+                <include>*:commons-daemon:jar</include>
+            </includes>
+            <outputFileNameMapping>commons-daemon.jar</outputFileNameMapping>
+            <outputDirectory>bin</outputDirectory>
+            <unpack>false</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+        <dependencySet>
+            <includes>
+                <include>*:commons-daemon:tar.gz:native-src</include>
+            </includes>
+            <outputFileNameMapping>commons-daemon-native.tar.gz</outputFileNameMapping>
+            <outputDirectory>bin</outputDirectory>
+            <unpack>false</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+
+        <!-- Grap Tomcat-slf4j-logback and rename tomcat-juli -->
+        <dependencySet>
+            <includes>
+                <include>*:tomcat9-slf4j-logback:jar</include>
+            </includes>
+            <outputFileNameMapping>tomcat-juli.${artifact.extension}</outputFileNameMapping>
+            <outputDirectory>bin</outputDirectory>
+            <unpack>false</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+
+        <!-- Grap Endorsed Dependencies -->
+        <dependencySet>
+            <includes>
+                <include>*:webservices-api</include>
+            </includes>
+            <outputDirectory>endorsed</outputDirectory>
+            <unpack>false</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+
+        <!-- Grap Lib Dependencies -->
+        <dependencySet>
+            <includes>
+                <include>*:ecj</include>
+                <include>*:jakarta.activation-api</include>
+                <include>*:jakarta.activation</include>
+                <include>*:jakarta.annotation-api</include>
+                <include>*:jakarta.ejb-api</include>
+                <include>*:jakarta.el-api</include>
+                <include>*:jakarta.el</include>
+                <include>*:jakarta.interceptor-api</include>
+                <include>*:jakarta.jms-api</include>
+                <include>*:jakarta.mail</include>
+                <include>*:jakarta.persistence-api</include>
+                <include>*:jakarta.resource-api</include>
+                <include>*:jakarta.transaction-api</include>
+                <include>*:jakarta.websocket-api</include>
+                <include>*:jmxremote_optional-repackaged</include>
+                <include>*:logback-access</include>
+                <include>*:logback-core</include>
+                <include>*:webservices-rt</include>
+            </includes>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+
+        <!-- Grap tomcat binaries that require no renaming -->
+        <dependencySet>
+            <includes>
+                <include>*:tomcat-api</include>
+                <include>*:tomcat-coyote</include>
+                <include>*:tomcat-dbcp</include>
+                <include>*:tomcat-jdbc</include>
+                <include>*:tomcat-jni</include>
+                <include>*:tomcat-util</include>
+                <include>*:tomcat-util-scan</include>
+                <include>*:tomcat-websocket</include>
+            </includes>
+            <outputFileNameMapping>${artifact.name}.${artifact.extension}</outputFileNameMapping>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+
+        <!-- Grap and rename remaining tomcat binaries to match defaults -->
+        <dependencySet>
+            <includes>
+                <include>*:tomcat-catalina</include>
+            </includes>
+            <outputFileNameMapping>catalina.${artifact.extension}</outputFileNameMapping>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+        <dependencySet>
+            <includes>
+                <include>*:tomcat-catalina-ant</include>
+            </includes>
+            <outputFileNameMapping>catalina-ant.${artifact.extension}</outputFileNameMapping>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+        <dependencySet>
+            <includes>
+                <include>*:tomcat-catalina-ha</include>
+            </includes>
+            <outputFileNameMapping>catalina-ha.${artifact.extension}</outputFileNameMapping>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+        <dependencySet>
+            <includes>
+                <include>*:tomcat-jasper</include>
+            </includes>
+            <outputFileNameMapping>jasper.${artifact.extension}</outputFileNameMapping>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+        <dependencySet>
+            <includes>
+                <include>*:tomcat-jasper-el</include>
+            </includes>
+            <outputFileNameMapping>jasper-el.${artifact.extension}</outputFileNameMapping>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+        <dependencySet>
+            <includes>
+                <include>*:tomcat-jaspic-api</include>
+            </includes>
+            <outputFileNameMapping>jaspic-api.${artifact.extension}</outputFileNameMapping>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+        <dependencySet>
+            <includes>
+                <include>*:tomcat-jsp-api</include>
+            </includes>
+            <outputFileNameMapping>jsp-api.${artifact.extension}</outputFileNameMapping>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+        <dependencySet>
+            <includes>
+                <include>*:tomcat-servlet-api</include>
+            </includes>
+            <outputFileNameMapping>servlet-api.${artifact.extension}</outputFileNameMapping>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+        <dependencySet>
+            <includes>
+                <include>*:tomcat-ssi</include>
+            </includes>
+            <outputFileNameMapping>catalina-ssi.${artifact.extension}</outputFileNameMapping>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+        <dependencySet>
+            <includes>
+                <include>*:tomcat-storeconfig</include>
+            </includes>
+            <outputFileNameMapping>catalina-storeconfig.${artifact.extension}</outputFileNameMapping>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+        <dependencySet>
+            <includes>
+                <include>*:tomcat-tribes</include>
+            </includes>
+            <outputFileNameMapping>catalina-tribes.${artifact.extension}</outputFileNameMapping>
+            <outputDirectory>lib</outputDirectory>
+            <unpack>false</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+
+        <!-- Grab Wars -->
+        <dependencySet>
+            <includes>
+                <include>*:war</include>
+            </includes>
+            <fileMode>06444</fileMode>
+            <outputFileNameMapping>probe.${artifact.extension}</outputFileNameMapping>
+            <outputDirectory>webapps</outputDirectory>
+            <unpack>false</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+    </dependencySets>
+</assembly>
