@@ -86,7 +86,7 @@
         <mail.version>1.6.7</mail.version>
         <persistence.version>2.2.3</persistence.version>
         <resource.version>1.7.4</resource.version>
-        <transaction.version>1.3.3</transaction.version>
+        <transaction.version>2.0.1</transaction.version>
         <websocket.version>1.1.2</websocket.version>
 
         <!-- JMX Remote -->
