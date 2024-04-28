@@ -93,7 +93,7 @@
         <jmx-remote.version>5.0</jmx-remote.version>
 
         <!-- Metro (include in tomcat for java 8 or lower -->
-        <metro.version>2.4.10</metro.version>
+        <metro.version>4.0.3</metro.version>
 
         <!-- Automatic Module Name -->
         <module.name>com.github.hazendaz.tomcat</module.name>
