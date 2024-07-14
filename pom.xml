@@ -70,6 +70,7 @@
         <ecj.version>3.26.0</ecj.version>
         <logback.version>1.2.13</logback.version>
         <tomcat.version>9.0.91</tomcat.version>
+        <tomcat-config.version>9.0.91</tomcat-config.version>
         <tomcat-slf4j-logback.version>9.0.89</tomcat-slf4j-logback.version>
 
         <!-- Psi Probe Tomcat Manager -->
@@ -348,7 +349,7 @@
                                 <artifactItem>
                                     <groupId>com.github.hazendaz.tomcat</groupId>
                                     <artifactId>tomcat9-config</artifactId>
-                                    <version>${tomcat.version}</version>
+                                    <version>${tomcat-config.version}</version>
                                     <type>tar.xz</type>
                                     <classifier>distro</classifier>
                                     <outputDirectory>${project.build.directory}</outputDirectory>
