@@ -346,7 +346,7 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>unpack-tomcat</id>
+                        <id>unpack-tomcat-binaries</id>
                         <goals>
                             <goal>unpack</goal>
                         </goals>
