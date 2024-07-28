@@ -437,7 +437,7 @@
                                             <type>tar.xz</type>
                                             <classifier>distro</classifier>
                                             <outputDirectory>${project.build.directory}</outputDirectory>
-                                            <includes>**/*.jar,**/*.tar.gz</includes>
+                                            <excludes>**/*.jar,**/*.tar.gz</excludes>
                                         </artifactItem>
                                     </artifactItems>
                                 </configuration>
