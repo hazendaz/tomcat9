@@ -222,6 +222,7 @@
             <includes>
                 <include>*:tomcat-api</include>
                 <include>*:tomcat-coyote</include>
+                <include>*:tomcat-coyote-ffm</include>
                 <include>*:tomcat-dbcp</include>
                 <include>*:tomcat-jdbc</include>
                 <include>*:tomcat-jni</include>
