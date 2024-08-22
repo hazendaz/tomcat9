@@ -45,8 +45,8 @@
     <scm>
         <connection>scm:git:ssh://git@github.com/hazendaz/tomcat9.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/hazendaz/tomcat9.git</developerConnection>
-        <url>https://github.com/hazendaz/tomcat9</url>
         <tag>HEAD</tag>
+        <url>https://github.com/hazendaz/tomcat9</url>
     </scm>
     <distributionManagement>
         <site>
@@ -116,9 +116,9 @@
             <groupId>commons-daemon</groupId>
             <artifactId>commons-daemon</artifactId>
             <version>${commons-daemon.version}</version>
-            <scope>runtime</scope>
-            <type>tar.gz</type>
             <classifier>native-src</classifier>
+            <type>tar.gz</type>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>com.github.tomcat-slf4j-logback</groupId>
@@ -336,8 +336,8 @@
             <groupId>com.github.psi-probe</groupId>
             <artifactId>psi-probe-web</artifactId>
             <version>${psi-probe.version}</version>
-            <scope>compile</scope>
             <type>war</type>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>
@@ -402,10 +402,10 @@
                 <executions>
                     <execution>
                         <id>make-assembly</id>
-                        <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
+                        <phase>package</phase>
                     </execution>
                 </executions>
             </plugin>

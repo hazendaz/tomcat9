@@ -73,9 +73,9 @@
     -->
     <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
                executor="tomcatThreadPool" SSLEnabled="true" scheme="https" secure="true"
-               maxThreads="300" 
+               maxThreads="300"
                maxParameterCount="1000"
-               compression="on" compressionMinSize="100" 
+               compression="on" compressionMinSize="100"
                compressibleMimeType="text/html,text/xml,text/css,text/javascript,application/x-javascript,application/javascript"
                >
         <SSLHostConfig>
