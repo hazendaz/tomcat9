@@ -78,10 +78,9 @@
                compression="on" compressionMinSize="100"
                compressibleMimeType="text/html,text/xml,text/css,text/javascript,application/x-javascript,application/javascript"
                >
-        <SSLHostConfig>
+        <SSLHostConfig certificateVerification="optional" protocols="+TLSv1.2,+TLSv1.3" truststoreFile="truststore/truststore.p12" truststorePassword="s3cret" truststoreType="PKCS12">
             <Certificate certificateKeystoreFile="keystore/keystore.p12" certificateKeystorePassword="s3cret" certificateKeystoreType="PKCS12"
-                         truststoreFile="keystore/keystore.p12" truststorePassord="s3cret" truststoreType="PKCS12"
-                         type="RSA" certificateVerification="want" sslProtocol="TLS" />
+                         type="RSA" />
         </SSLHostConfig>
     </Connector>
 
