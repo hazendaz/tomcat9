@@ -181,6 +181,7 @@
         </dependencySet>
 
         <!-- Grap Endorsed Dependencies -->
+        <!-- Legacy usage
         <dependencySet>
             <includes>
                 <include>*:webservices-api</include>
@@ -189,6 +190,7 @@
             <unpack>false</unpack>
             <useProjectArtifact>false</useProjectArtifact>
         </dependencySet>
+        -->
 
         <!-- Grap Lib Dependencies -->
         <dependencySet>
@@ -210,7 +212,9 @@
                 <include>*:jmxremote_optional-repackaged</include>
                 <include>*:logback-access</include>
                 <include>*:logback-core</include>
+                <!-- Legacy Usage
                 <include>*:webservices-rt</include>
+                -->
             </includes>
             <outputDirectory>lib</outputDirectory>
             <unpack>false</unpack>
