@@ -472,7 +472,7 @@
                                     <target>
                                         <echo message="Copying tomcat, review git staging and commit as needed." />
                                         <copy overwrite="true" todir="${project.basedir}/src/assembly/config">
-                                            <fileset dir="${project.build.directory}/${project.environment}-${tomcat.version}">
+                                            <fileset dir="${project.build.directory}/${project.environment}-${tomcat-config.version}">
                                                 <include name="**/*" />
                                             </fileset>
                                         </copy>
