@@ -14,7 +14,7 @@
     <parent>
         <groupId>com.github.hazendaz</groupId>
         <artifactId>base-parent</artifactId>
-        <version>58</version>
+        <version>59</version>
         <relativePath />
     </parent>
 
@@ -88,6 +88,7 @@
 
         <!-- Metro (include in tomcat for java 8 or lower -->
         <metro.version>2.4.10</metro.version>
+        <checker-qual.version>3.54.0</checker-qual.version>
 
         <!-- Automatic Module Name -->
         <module.name>com.github.hazendaz.tomcat</module.name>
