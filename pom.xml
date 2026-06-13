@@ -67,7 +67,7 @@
         <tomcat-slf4j-logback.version>9.0.118</tomcat-slf4j-logback.version>
 
         <!-- Psi Probe Tomcat Manager -->
-        <psi-probe.version>4.5.0</psi-probe.version>
+        <psi-probe.version>4.6.0</psi-probe.version>
 
         <!-- Java EE Api Versions -->
         <activation.version>1.2.2</activation.version>
