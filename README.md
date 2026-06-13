@@ -1,5 +1,4 @@
-Tomcat 9 Bundle
-===============
+# Tomcat 9 Bundle
 
 [![Java CI](https://github.com/hazendaz/tomcat9/actions/workflows/ci.yaml/badge.svg)](https://github.com/hazendaz/tomcat9/actions/workflows/ci.yaml)
 [![Apache 2.0 License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
